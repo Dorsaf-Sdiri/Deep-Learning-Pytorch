@@ -2,7 +2,7 @@ from Utils import *
 import torch.nn as nn
 import torch
 
-TRAIN_IMG_DIR = "data\\train_input\\resnet_features\\"
+TRAIN_IMG_DIR = "\\data\\train_input\\resnet_features\\"
 
 
 class Model(nn.Module):

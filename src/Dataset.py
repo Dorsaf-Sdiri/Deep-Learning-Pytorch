@@ -6,7 +6,7 @@ import pickle
 # Indexes of 100 most important features among ResNet50 feature extraction in order to reduce the Runtime
 with open("Important_features.pkl", "rb") as f:
     mynewlist = pickle.load(f)
-TRAIN_IMG_DIR = "data\\train_input\\resnet_features\\"
+TRAIN_IMG_DIR = "\\data\\train_input\\resnet_features\\"
 
 
 class Camelyon16(Dataset):

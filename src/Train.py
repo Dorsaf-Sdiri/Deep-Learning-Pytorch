@@ -115,6 +115,7 @@ def train_fn(fold):
 
             start_time = time.time()
             model.eval()
+            # model.train()
 
             avg_loss = 0.0
 
@@ -202,7 +203,7 @@ def train_fn(fold):
                 LOGGER.debug(
                     f"  Epoch {epoch + 1} - Save Best Score: {best_auc:.4f} Model"
                 )
-                torch.save(model.state_dict(), f"{Weights}fold{fold}_WSI.pth")
+                torch.save(model.state_dict(), f"fold{fold}_WSI.pth")
     print("Best AUC", best_auc)
     # Plot losses
     plt.figure(figsize=(26, 6))
