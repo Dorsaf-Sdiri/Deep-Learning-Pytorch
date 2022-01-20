@@ -18,8 +18,8 @@ To train the model using the competition data, please follow these steps:
  
 1. Clone this repo
 2. Install dependencies via `pip install -r requirements.txt`
-3. Download the ResNet50 data or the raw data using Data_Collection.py. 
-4. Set the configuration file `working/config.py`. It is recommended to use the default values.
+3. Download the ResNet50 data or the raw data using src/Data_Collection.py. 
+4. Set the configuration file `src/config.py`. It is recommended to use the default values.
 
     * TRAINING_BATCH_SIZE: The training batch size
     * TEST_BATCH_SIZE: The testing/validation batch size
@@ -31,8 +31,8 @@ To train the model using the competition data, please follow these steps:
 
 
 6. Run training script Train.py or the Dokerfile
-7. 
-## Training tracking
+
+## Tracking and logging
 Run mlflow ui in the command line and open http://127.0.0.1:5000 in the browser
 
 
