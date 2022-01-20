@@ -11,4 +11,4 @@ class CFG:
 class CFG_MODEL:
     szbag = 2
     target_size = 2
-    target_col = 'Target'
+    target_col = "Target"
