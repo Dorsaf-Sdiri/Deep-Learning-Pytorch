@@ -1,7 +1,7 @@
 # Chowder_Test
 
 
-## Hardware/OS used for the competiion
+## Hardware/OS used for the competition
 - CPU:  4 cores
 - RAM: 24GB
 - OS: Windows10 and Ubuntu 20.04
@@ -32,5 +32,5 @@ To train the model using the competition data, please follow these steps:
 *The maximal AUC reached is 0.689
 ![Alt Image text](LOSS.png?raw=true "Optional Title")
 ## Tracking and logging
-Run mlflow ui in the command line and open http://127.0.0.1:5000 in the browser
+Run [mlflow ui](http://127.0.0.1:5000/#/experiments/0/s?searchInput=&orderByKey=attributes.start_time&orderByAsc=false&startTime=ALL&lifecycleFilter=Active&modelVersionFilter=All%20Runs&showMultiColumns=true&categorizedUncheckedKeys%5Battributes%5D%5B0%5D=&categorizedUncheckedKeys%5Bparams%5D%5B0%5D=&categorizedUncheckedKeys%5Bmetrics%5D%5B0%5D=&categorizedUncheckedKeys%5Btags%5D%5B0%5D=&diffSwitchSelected=false&preSwitchCategorizedUncheckedKeys%5Battributes%5D%5B0%5D=&preSwitchCategorizedUncheckedKeys%5Bparams%5D%5B0%5D=&preSwitchCategorizedUncheckedKeys%5Bmetrics%5D%5B0%5D=&preSwitchCategorizedUncheckedKeys%5Btags%5D%5B0%5D=&postSwitchCategorizedUncheckedKeys%5Battributes%5D%5B0%5D=&postSwitchCategorizedUncheckedKeys%5Bparams%5D%5B0%5D=&postSwitchCategorizedUncheckedKeys%5Bmetrics%5D%5B0%5D=&postSwitchCategorizedUncheckedKeys%5Btags%5D%5B0%5D=) in the command line and open http://127.0.0.1:5000 in the browser
 .pth files are saved for best AUC

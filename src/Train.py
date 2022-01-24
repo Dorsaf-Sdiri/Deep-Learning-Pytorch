@@ -109,11 +109,16 @@ def train_fn(fold):
     mlflow.pytorch.autolog()
 
     # Train the model
-    with mlflow.start_run() as run:
-
+    # mlflow.set_experiment("experiment name")
+    # experiment = mlflow.get_experiment_by_name("experiment name")
+    #
+    # with mlflow.start_run(experiment_id=experiment.experiment_id):
+    # with mlflow.start_run() as run:
+    with mlflow.start_run(experiment_id=experiment.experiment_id) as run:
         for epoch in range(CFG.epochs):
-
+            seed_everything(99)
             start_time = time.time()
+            mlflow.log_metric(key="quality", value=2 * epoch, step=epoch)
             model.eval()
             # model.train()
 
@@ -121,7 +126,6 @@ def train_fn(fold):
 
             optimizer.zero_grad()
 
-            mlflow.pytorch.log_model(model, "model")
             tk0 = tqdm(enumerate(train_loader), total=len(train_loader))
 
             for i, (images, labels) in tk0:
@@ -143,7 +147,10 @@ def train_fn(fold):
 
                 avg_loss += loss.item() / len(train_loader)
                 step += 1
-
+            mlflow.pytorch.log_model(model, "model")
+            # convert to scripted model and log the model
+            scripted_pytorch_model = torch.jit.script(model)
+            mlflow.pytorch.log_model(scripted_pytorch_model, "scripted_model")
             model.eval()
             avg_val_loss = 0.0
             preds = []
@@ -163,6 +170,8 @@ def train_fn(fold):
 
                 loss = criterion(y_preds, labels)
                 avg_val_loss += loss.item() / len(valid_loader)
+
+                mlflow.log_metric("Average Loss", avg_val_loss, step=epoch)
 
             lossVal.append(avg_val_loss)
             stepVal.append(step)
@@ -218,5 +227,11 @@ def train_fn(fold):
 
 
 if __name__ == "__main__":
+    mlflow.set_tracking_uri(
+        "file:///C:/Users/dorsaf.sdiri_medixte/Chowder_Test/src/mlruns/0"
+    )
+    mlflow.set_experiment("experiment name")
+    experiment = mlflow.get_experiment_by_name("experiment name")
     for fold in range(CFG.n_fold):
+
         train_fn(fold)
